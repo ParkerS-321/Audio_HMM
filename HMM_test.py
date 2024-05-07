@@ -34,7 +34,7 @@ for dir in os.listdir(input_test):
 		if file.endswith('.wav'):
 			file_path = os.path.join(dir_path,file)
 			sample_freq, audio = librosa.load(file_path)
-			mfcc_features = mfcc(y=sample_freq, sr=audio,n_mfcc=12)[:,:15]
+			mfcc_features = mfcc(y=sample_freq, sr=audio)[:,:13]
 			#print(mfcc_features.shape)
 			scores= []			
 			for item in models:
@@ -55,5 +55,4 @@ for dir in os.listdir(input_test):
 
 acc = accuracy_score(y_true, y_pred)
 print(acc)
-print(count/900)
 

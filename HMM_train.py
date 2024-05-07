@@ -35,11 +35,12 @@ for dir in os.listdir(input_train):
 			file_path = os.path.join(dir_path, file)
 			sample_freq, audio = librosa.load(file_path)
 			#MFCC Features
-			mfcc_features = mfcc(y=sample_freq, sr=audio, n_mfcc = 12)
+			mfcc_features = mfcc(y=sample_freq, sr=audio)
 			if len(X) == 0:
-				X = mfcc_features[:,:15]
+				X = mfcc_features[:,:13]
 			else:
-				X = np.append(X, mfcc_features[:,:15], axis=0)
+				X = np.append(X, mfcc_features[:,:13], axis=0)
+		
 			labels.append(label)
 	
 	#print('X.shape = ', X.shape)
@@ -54,5 +55,3 @@ for dir in os.listdir(input_train):
 
 with open('models.pkl', 'wb') as file:
 	pickle.dump(models, file)
-
-

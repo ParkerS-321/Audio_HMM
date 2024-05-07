@@ -11,16 +11,16 @@ from librosa.feature import mfcc
 
 
 
-#Class to store the 10 HMM models
+#Class to store the 9 HMM models
 
 class HMMTrain(object):
-	def __init__(self,model_name='GaussianHMM', n_components=4):
+	def __init__(self,model_name='GMMHMM', n_components=6, n_mix=4):
 		self.model_name = model_name
 		self.n_components = n_components
 		
 		self.models = []			
-		if self.model_name == 'GaussianHMM':
-			self.model=hmm.GaussianHMM(n_components=4)
+		if self.model_name == 'GMMHMM':
+			self.model=hmm.GMMHMM(n_components=6, n_mix=4)
 		else:
 			print("Please choose GaussianHMM")		
 	
